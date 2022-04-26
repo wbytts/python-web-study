@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>路由表</title>
+    <style>
+      .rules-table, th, td {
+        border: 1px dashed #666;
+        border-spacing: 0;
+      }
+      th, td {
+        padding: 8px 16px 8px 16px;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <table class="rules-table">
+      <tr>
+        <th>请求路径</th>
+        <th>请求方法</th>
+        <th>端点</th>
+      </tr>
+
+      {% for rule in rules %}
+        <tr>
+          <td>{{ rule.rule }}</td>
+          <td>{{ rule.methods }}</td>
+          <td>{{ rule.endpoint }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+
+
+  </body>
+
+</html>

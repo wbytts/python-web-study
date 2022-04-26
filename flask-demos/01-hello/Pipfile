@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+python-dotenv = "*"
+requests = "*"
+numpy = "*"
+matplotlib = "*"
+flask-sqlalchemy = "*"
+pymysql = "*"
+flask-migrate = "*"
+
+[dev-packages]
+yapf = "*"
+
+
