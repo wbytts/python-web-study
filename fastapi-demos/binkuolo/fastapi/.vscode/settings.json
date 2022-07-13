@@ -1,0 +1,6 @@
+{
+  "python.linting.enabled": true,
+  "python.linting.mypyEnabled": false,
+  "mypy.dmypyExecutable": "${workspaceFolder}\\venv\\Scripts\\dmypy.exe",
+  "python.formatting.blackArgs": ["--skip-string-normalization", "--line-length 250"]
+}

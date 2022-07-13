@@ -2,6 +2,9 @@ from fastapi import FastAPI, Query, Path, Body
 from enum import Enum
 from typing import Optional, List, Set, Dict, Tuple
 from pydantic import BaseModel, Field, HttpUrl
+import os
+
+os.system('chcp & cls')
 
 """
 fastapi的安装：
@@ -19,6 +22,8 @@ uvicorn，你可以将其用作运行代码的服务器
         main：main.py 文件（一个 Python「模块」）。
         app：在 main.py 文件中通过 app = FastAPI() 创建的对象。
         --reload：让服务器在更新代码后重新启动。仅在开发时使用该选项。
+        
+    uvicorn main:app --host '0.0.0.0' --port 8080 --reload
 """
 
 """
@@ -35,7 +40,7 @@ uvicorn，你可以将其用作运行代码的服务器
 
 # 创建一个 FastAPI「实例」
 # 这个实例将是创建你所有 API 的主要交互对象。
-app = FastAPI(
+app: FastAPI = FastAPI(
     title="整体标题",  # 标题
     description="整体描述",  # 整体描述
 )
@@ -96,6 +101,8 @@ OpenAPI 不支持任何方式去声明路径参数以在其内部包含路径，
 不过，你仍然可以通过 Starlette 的一个内部工具在 FastAPI 中实现它。
 而且文档依旧可以使用，但是不会添加任何该参数应包含路径的说明。
 """
+
+
 # 路径转换器
 # 你可以使用直接来自 Starlette 的选项来声明一个包含路径的路径参数：
 # 在这种情况下，参数的名称为 file_path，结尾部分的 :path 说明该参数应匹配任意的路径。
@@ -114,14 +121,14 @@ async def read_file(file_path: str):
 
 
 @app.get("/items/", tags=["items"])
-async def read_item(skip: int = 0, limit: int = 10):
+async def read_item_1(skip: int = 0, limit: int = 10):
     fake_items_db = [{"item_name": "Foo"}, {"item_name": "Bar"}, {"item_name": "Baz"}]
-    return fake_items_db[skip : skip + limit]
+    return fake_items_db[skip: skip + limit]
 
 
 # 可选参数：通过同样的方式，你可以将它们的默认值设置为 None 来声明可选查询参数
 @app.get("/items/{item_id}", tags=["items"])
-async def read_item(item_id: str, q: Optional[str] = None):
+async def read_item_2(item_id: str, q: Optional[str] = None):
     if q:
         return {"item_id": item_id, "q": q}
     return {"item_id": item_id}
@@ -140,7 +147,6 @@ async def read_item(item_id: str, q: Optional[str] = None):
     但当你想让一个查询参数成为必需的，不声明任何默认值就可以
 """
 
-
 """
 请求体：
     当你需要将数据从客户端（例如浏览器）发送给 API 时，你将其作为「请求体」发送。
@@ -149,6 +155,7 @@ async def read_item(item_id: str, q: Optional[str] = None):
     我们使用 Pydantic 模型来声明请求体，并能够获得它们所具有的所有能力和优点。
     注：你不能使用 GET 操作（HTTP 方法）发送请求体，要发送数据，你必须使用下列方法之一：POST（较常见）、PUT、`DELETE` 或 PATCH。
 """
+
 
 # 首先，你需要从 pydantic 中导入 BaseModel
 # from pydantic import BaseModel
@@ -184,7 +191,7 @@ async def create_item2(item_id: int, item: Item):
 async def create_item3(item_id: int, item: Item, q: Optional[str] = None):
     result = {"item_id": item_id, **item.dict()}
     if q:
-        result.update({"q": q})
+        result.update({"q": q})  # type: ignore
     return result
 
 
@@ -198,7 +205,6 @@ async def create_item3(item_id: int, item: Item, q: Optional[str] = None):
 """
 不使用 Pydantic：如果你不想使用 Pydantic 模型，你还可以使用 Body 参数
 """
-
 
 """
 查询参数和字符串校验:
@@ -266,14 +272,12 @@ async def read_items6(q: list = Query([])):
     其中一些可能不会展示所有已声明的额外信息，尽管在大多数情况下，缺少的这部分功能已经计划进行开发。
 """
 
-
 """
 弃用参数
     现在假设你不再喜欢此参数。
     你不得不将其保留一段时间，因为有些客户端正在使用它，但你希望文档清楚地将其展示为已弃用。
     那么将参数 deprecated=True 传入 Query
 """
-
 
 """
 路径参数和数值校验:
@@ -329,7 +333,9 @@ Python 不会对该 * 做任何事情，但是它将知道之后的所有参数�
 
 @app.get("/items9/{item_id}", tags=["items"])
 async def read_items9(
-    *, item_id: int = Path(..., title="The ID of the item to get"), q: str
+    *,
+    item_id: int = Path(..., title="The ID of the item to get"),
+    q: str
 ):
     results = {"item_id": item_id}
     if q:
