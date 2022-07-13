@@ -88,18 +88,21 @@ application.add_exception_handler(
     Exception.UnicornException, Exception.unicorn_exception_handler
 )
 application.add_exception_handler(DoesNotExist, Exception.mysql_does_not_exist)
-application.add_exception_handler(OperationalError, Exception.mysql_operational_error)
+application.add_exception_handler(
+    OperationalError, Exception.mysql_operational_error)
 
 # 中间件
 application.add_middleware(Middleware.BaseMiddleware)
 
-application.add_middleware(
-    CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
-    allow_credentials=settings.CORS_ALLOW_CREDENTIALS,
-    allow_methods=settings.CORS_ALLOW_METHODS,
-    allow_headers=settings.CORS_ALLOW_HEADERS,
-)
+
+# 允许跨域
+# application.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=settings.CORS_ORIGINS,
+#     allow_credentials=settings.CORS_ALLOW_CREDENTIALS,
+#     allow_methods=settings.CORS_ALLOW_METHODS,
+#     allow_headers=settings.CORS_ALLOW_HEADERS,
+# )
 
 application.add_middleware(
     SessionMiddleware,
@@ -112,7 +115,8 @@ application.add_middleware(
 application.include_router(Router.router)
 
 # 静态资源目录
-application.mount("/static", StaticFiles(directory=settings.STATIC_DIR), name="static")
+application.mount(
+    "/static", StaticFiles(directory=settings.STATIC_DIR), name="static")
 application.state.views = Jinja2Templates(directory=settings.TEMPLATE_DIR)
 
 app = application
