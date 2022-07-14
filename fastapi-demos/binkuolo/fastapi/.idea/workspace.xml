@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16c389bd-0c60-4f0b-9570-afc92783fc31" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../by-fastapi-template/fastapi-service/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../by-fastapi-template/fastapi-service/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../by-fastapi-template/fastapi-service/core/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../by-fastapi-template/fastapi-service/core/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../by-fastapi-template/fastapi-service/core/database/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../by-fastapi-template/fastapi-service/core/event/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../by-fastapi-template/fastapi-service/core/middleware/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../by-fastapi-template/fastapi-service/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../by-fastapi-template/fastapi-service/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../by-fastapi-template/fastapi-service/schemas/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../by-fastapi-template/fastapi-service/static/redoc/redoc.standalone.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../by-fastapi-template/fastapi-service/static/swagger-ui/swagger-ui-bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../by-fastapi-template/fastapi-service/static/swagger-ui/swagger-ui.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../by-fastapi-template/fastapi-service/utils/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../001-hello/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../001-hello/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/mysql.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/mysql.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +23,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -47,6 +35,8 @@
       <option name="presentableId" value="Default" />
       <updated>1657608379910</updated>
       <workItem from="1657608390680" duration="8519000" />
+      <workItem from="1657736966314" duration="3035000" />
+      <workItem from="1657757045639" duration="1952000" />
     </task>
     <servers />
   </component>

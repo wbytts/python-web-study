@@ -17,9 +17,9 @@ DB_ORM_CONFIG = {
                 'host': os.getenv('BASE_HOST', '127.0.0.1'),
                 'user': os.getenv('BASE_USER', 'root'),
                 # 我的 root，cbh的 123456
-                'password': os.getenv('BASE_PASSWORD', '123456'),
+                'password': os.getenv('BASE_PASSWORD', 'root'),
                 'port': int(os.getenv('BASE_PORT', 3306)),
-                'database': os.getenv('BASE_DB', 'fastapi'),
+                'database': os.getenv('BASE_DB', 'fastapi-binkuolo'),
             }
         },
         # "db2": {
@@ -59,6 +59,6 @@ async def register_mysql(app: FastAPI):
     register_tortoise(
         app,
         config=DB_ORM_CONFIG,
-        generate_schemas=False,
-        add_exception_handlers=True,
+        generate_schemas=False,  # 是否生成表结构
+        add_exception_handlers=True,  # 是否开启异常信息处理
     )
