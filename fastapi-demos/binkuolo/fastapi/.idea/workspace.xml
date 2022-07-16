@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="16c389bd-0c60-4f0b-9570-afc92783fc31" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/mysql.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/mysql.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +35,7 @@
       <updated>1657608379910</updated>
       <workItem from="1657608390680" duration="8519000" />
       <workItem from="1657736966314" duration="3035000" />
-      <workItem from="1657757045639" duration="1952000" />
+      <workItem from="1657757045639" duration="5559000" />
     </task>
     <servers />
   </component>
