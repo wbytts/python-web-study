@@ -11,3 +11,5 @@ async def home(request: Request):
     :return:
     """
     return request.app.state.views.TemplateResponse("index.html", {"request": request})
+
+

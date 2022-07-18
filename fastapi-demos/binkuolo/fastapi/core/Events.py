@@ -21,7 +21,7 @@ def startup(app: FastAPI) -> Callable[[], Coroutine[Any, Any, None]]:
         print("fastapi已启动")
         # 注册数据库
         await register_mysql(app)
-        # 注入缓存到app state
+        # 注入缓存到 app.state
         app.state.cache = await sys_cache()
         app.state.code_cache = await code_cache()
 

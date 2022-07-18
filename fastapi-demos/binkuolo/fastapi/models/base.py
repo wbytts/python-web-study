@@ -8,6 +8,7 @@ from tortoise.models import Model
 
 
 class TimestampMixin(Model):
+    """创建时间、更新时间 基础模型"""
     create_time = fields.DatetimeField(auto_now_add=True, description="创建时间")
     update_time = fields.DatetimeField(auto_now=True, description="更新时间")
 
@@ -36,6 +37,7 @@ class UserWechat(TimestampMixin):
 
 
 class User(TimestampMixin):
+    """基础用户模型"""
     role: fields.ManyToManyRelation["Role"] = fields.ManyToManyField(
         "base.Role", related_name="user", on_delete=fields.CASCADE
     )
@@ -61,6 +63,7 @@ class User(TimestampMixin):
 
 
 class Role(TimestampMixin):
+    """角色"""
     user: fields.ManyToManyRelation[User]
     role_name = fields.CharField(max_length=15, description="角色名称")
     access: fields.ManyToManyRelation["Access"] = fields.ManyToManyField(
@@ -75,6 +78,7 @@ class Role(TimestampMixin):
 
 
 class Access(TimestampMixin):
+    """权限"""
     role: fields.ManyToManyRelation[Role]
     access_name = fields.CharField(max_length=15, description="权限名称")
     parent_id = fields.IntField(default=0, description="父id")

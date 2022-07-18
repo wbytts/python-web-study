@@ -2,28 +2,67 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16c389bd-0c60-4f0b-9570-afc92783fc31" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../django/bilibili_zai_qiao_yi_hang_dai_ma/mysite_dj22/article/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../django/bilibili_zai_qiao_yi_hang_dai_ma/mysite_dj22/article/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../django/bilibili_zai_qiao_yi_hang_dai_ma/mysite_dj22/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../../../django/bilibili_zai_qiao_yi_hang_dai_ma/mysite_dj22/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/common/log.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/log.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/endpoints/sys/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/sys/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/extends/cos.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/extends/cos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/extends/wechat.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/extends/wechat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Events.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/Events.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/redis.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/redis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/viewpoints/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/viewpoints/admin.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="ProjectId" id="2BpgGwl6ovUQOz1MUlgy88hKe3Z" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/vue-docs-ui" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="E:\my-projects\python-web-study\fastapi-demos\binkuolo\fastapi\docs-ui\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\my-projects\python-web-study\fastapi-demos\binkuolo\fastapi\static\vue-docs-ui" />
+      <recent name="E:\my-projects\python-web-study\fastapi-demos\binkuolo\fastapi\static" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\my-projects\python-web-study\fastapi-demos\binkuolo\fastapi\static\vue-docs-ui" />
+      <recent name="E:\my-projects\python-web-study\fastapi-demos\binkuolo\fastapi\service" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -36,10 +75,33 @@
       <workItem from="1657608390680" duration="8519000" />
       <workItem from="1657736966314" duration="3035000" />
       <workItem from="1657757045639" duration="5559000" />
+      <workItem from="1657974632848" duration="26314000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/docs-ui/vite.config.d.ts" />
+        <option value="$PROJECT_DIR$/docs-ui/vite.config.js" />
+        <option value="$PROJECT_DIR$/docs-ui/src/main.js" />
+        <option value="$PROJECT_DIR$/docs-ui/src/main.js.map" />
+      </list>
+    </option>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
