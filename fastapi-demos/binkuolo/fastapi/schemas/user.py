@@ -32,10 +32,14 @@ class SetRole(BaseModel):
 
 
 class AccountLogin(BaseModel):
-    username: Optional[str] = Field(min_length=3, max_length=10, description="用户名")
-    password: Optional[str] = Field(min_length=6, max_length=12, description="密码")
-    mobile: Optional[str] = Field(regex="^1[34567890]\\d{9}$", description="手机号")
-    captcha: Optional[str] = Field(min_length=6, max_length=6, description="6位验证码")
+    username: Optional[str] = Field(
+        min_length=3, max_length=10, description="用户名")
+    password: Optional[str] = Field(
+        min_length=6, max_length=12, description="密码")
+    mobile: Optional[str] = Field(
+        regex="^1[34567890]\\d{9}$", description="手机号")
+    captcha: Optional[str] = Field(
+        min_length=6, max_length=6, description="6位验证码")
 
 
 class ModifyMobile(BaseModel):
@@ -55,6 +59,7 @@ class UserInfo(BaseModel):
     user_status: bool
     header_img: Optional[str]
     sex: int
+    role_ids: Optional[List[int]]
 
 
 class UserListItem(BaseModel):
@@ -96,8 +101,10 @@ class UpdateUserInfo(BaseModel):
     nickname: Optional[str]
     user_email: Optional[str]
     header_img: Optional[str]
-    user_phone: Optional[str] = Field(regex="^1[34567890]\\d{9}$", description="手机号")
-    password: Optional[str] = Field(min_length=6, max_length=12, description="密码")
+    user_phone: Optional[str] = Field(
+        regex="^1[34567890]\\d{9}$", description="手机号")
+    password: Optional[str] = Field(
+        min_length=6, max_length=12, description="密码")
 
     @validator("*")
     def blank_strings(cls, v):

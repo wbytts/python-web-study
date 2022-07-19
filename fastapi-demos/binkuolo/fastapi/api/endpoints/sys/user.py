@@ -164,7 +164,8 @@ async def user_list(
     if create_time:
         query.setdefault("create_time__range", create_time)
 
-    user_data = User.annotate(key=F("id")).filter(**query).filter(id__not=1).all()
+    user_data = User.annotate(key=F("id")).filter(
+        **query).filter(id__not=1).all()
     # 总数
     total = await user_data.count()
     # 查询
@@ -203,7 +204,9 @@ async def user_info(req: Request):
     :return:
     """
     user_data = await User.get_or_none(pk=req.state.user_id)
-    if not user_data: return fail(msg=f"用户ID{req.state.user_id}不存在!")
+
+    if not user_data:
+        return fail(msg=f"用户ID{req.state.user_id}不存在!")
     # 非超级管理员
     access = []
     if not req.state.user_type:
@@ -218,14 +221,16 @@ async def user_info(req: Request):
         access = [i[0] for i in query_access]
     # 处理手机号 ****
     if user_data.user_phone:
-        user_data.user_phone = user_data.user_phone.replace(user_data.user_phone[3:7], "****")  # type: ignore
+        user_data.user_phone = user_data.user_phone.replace(
+            user_data.user_phone[3:7], "****")  # type: ignore
     # 将作用域加入到用户信息中
     user_data.__setattr__("scopes", access)
-
+    roles = await user_data.role.all().values_list("id")
+    user_data.__setattr__("role_ids", [i[0] for i in roles])
     return success(msg="用户信息", data=user_data.__dict__)
 
 
-@router.post("/account/login", response_model=user.UserLogin, summary="用户登陆")
+@ router.post("/account/login", response_model=user.UserLogin, summary="用户登陆")
 async def account_login(req: Request, post: user.AccountLogin):
     """
     用户登陆
@@ -236,11 +241,14 @@ async def account_login(req: Request, post: user.AccountLogin):
     if post.mobile and post.captcha:
         # 手机号登陆
         is_check = await check_code(req, post.captcha, post.mobile)
-        if not is_check: return fail(msg="验证码无效, 登陆失败, 请重新登陆!")
+        if not is_check:
+            return fail(msg="验证码无效, 登陆失败, 请重新登陆!")
         mobile_user = await User.get_or_none(user_phone=post.mobile)
-        jwt_data = {"user_id": mobile_user.pk, "user_type": mobile_user.user_type}
+        jwt_data = {"user_id": mobile_user.pk,
+                    "user_type": mobile_user.user_type}
         jwt_token = create_access_token(data=jwt_data)
-        data = {"token": jwt_token,"expires_in": settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES * 60}
+        data = {"token": jwt_token,
+                "expires_in": settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES * 60}
         await write_access_log(req, mobile_user.pk, "通过手机号登陆了系统!")
         return success(msg="登陆成功😄", data=data)
 
@@ -257,7 +265,8 @@ async def account_login(req: Request, post: user.AccountLogin):
             return fail(msg=f"用户{post.username}已被管理员禁用!")
         jwt_data = {"user_id": get_user.pk, "user_type": get_user.user_type}
         jwt_token = create_access_token(data=jwt_data)
-        data = {"token": jwt_token,"expires_in": settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES * 60}
+        data = {"token": jwt_token,
+                "expires_in": settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES * 60}
         await write_access_log(req, get_user.pk, "通过用户名登陆了系统!")
         return success(msg="登陆成功😄", data=data)
 
@@ -305,6 +314,7 @@ async def update_user_phone(req: Request, post: ModifyMobile):
     :return:
     """
     is_check = await check_code(req, post.captcha, post.mobile)
-    if not is_check: return fail(msg="无效验证码或验证已过期!")
+    if not is_check:
+        return fail(msg="无效验证码或验证已过期!")
     await User.filter(id=req.state.user_id).update(user_phone=post.mobile)
     return success(msg="手机号修改成功,登陆请用新绑定的手机号码!")
