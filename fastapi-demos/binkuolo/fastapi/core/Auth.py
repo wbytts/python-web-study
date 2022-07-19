@@ -33,7 +33,8 @@ def create_access_token(data: Dict[Any, Any]) -> str:
     # 向jwt加入超时时间
     token_data.update({"exp": expire})
     # jwt加密
-    jwt_token = jwt.encode(token_data, settings.JWT_SECRET_KEY, algorithm=settings.JWT_ALGORITHM)
+    jwt_token = jwt.encode(
+        token_data, settings.JWT_SECRET_KEY, algorithm=settings.JWT_ALGORITHM)
 
     return jwt_token
 
@@ -49,7 +50,8 @@ async def check_permissions(req: Request, security_scopes: SecurityScopes, token
     # ----------------------------------------验证JWT token------------------------------------------------------------
     try:
         # token解密
-        payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=[settings.JWT_ALGORITHM])
+        payload = jwt.decode(token, settings.JWT_SECRET_KEY,
+                             algorithms=[settings.JWT_ALGORITHM])
 
         if payload:
             # 用户ID

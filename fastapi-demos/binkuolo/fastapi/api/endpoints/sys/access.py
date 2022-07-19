@@ -8,6 +8,7 @@ from core.Auth import check_permissions
 from core.Response import fail, success
 from schemas import role, base
 from models.base import Role, Access
+import copy
 
 router = APIRouter(prefix="/access")
 
@@ -46,11 +47,17 @@ async def get_all_access(role_id: int):
     # 当前角色权限
     role_access = await Access.filter(role__id=role_id).values_list("id")
 
-    # 系统权限
+    # 系统权限 （通过 access_tree 组装成树状结构）
+    list_data = copy.deepcopy(result)
     tree_data = access_tree(result, 0)
+
     # 角色权限
     role_access = [i[0] for i in role_access]
-    data = {"all_access": tree_data, "role_access": role_access}
+    data = {
+        "all_access": tree_data,
+        "role_access": role_access,
+        "list_data": list_data,
+    }
     return success(msg="当前用户可以下发的权限", data=data)
 
 

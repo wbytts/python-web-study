@@ -17,9 +17,9 @@ DB_ORM_CONFIG = {
                 'host': os.getenv('BASE_HOST', '127.0.0.1'),
                 'user': os.getenv('BASE_USER', 'root'),
                 # 我的 root，cbh的 123456
-                'password': os.getenv('BASE_PASSWORD', 'root'),
+                'password': os.getenv('BASE_PASSWORD', '123456'),
                 'port': int(os.getenv('BASE_PORT', 3306)),
-                'database': os.getenv('BASE_DB', 'fastapi-binkuolo'),
+                'database': os.getenv('BASE_DB', 'fastapi'),
             }
         },
         # "db2": {
