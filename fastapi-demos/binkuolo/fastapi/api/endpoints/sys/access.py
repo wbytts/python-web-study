@@ -42,7 +42,7 @@ async def get_all_access(role_id: int):
     result = (
         await Access.annotate(key=F("id"), title=F("access_name"))
         .all()
-        .values("key", "title", "parent_id")
+        .values("key", "title", "parent_id", "is_menu")
     )
     # 当前角色权限
     role_access = await Access.filter(role__id=role_id).values_list("id")
