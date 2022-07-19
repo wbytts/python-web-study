@@ -7,7 +7,7 @@ import time
 from wechatpy.oauth import WeChatOAuth
 from wechatpy.exceptions import WeChatOAuthException
 from fastapi import Request, APIRouter, Security
-from api.common.log import write_access_log
+from service.log import write_access_log
 from core.Auth import create_access_token, check_permissions
 from core.Response import fail, success
 from models.base import SystemParams

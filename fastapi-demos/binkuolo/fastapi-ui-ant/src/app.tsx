@@ -169,8 +169,11 @@ const authHeaderInterceptor = (url: string, options: RequestOptionsInit) => {
   };
 };
 
+
+// 定义请求配置对象
 // https://umijs.org/zh-CN/plugins/plugin-request
 export const request: RequestConfig = {
+  // 请求错误处理
   errorHandler,
   // 请求拦截
   requestInterceptors: [authHeaderInterceptor],

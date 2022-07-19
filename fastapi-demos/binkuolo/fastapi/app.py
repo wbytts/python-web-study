@@ -5,21 +5,24 @@
 @Des: app运行时文件
 """
 import os
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request, Path
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from starlette.middleware.sessions import SessionMiddleware
-from config import settings
 from fastapi.staticfiles import StaticFiles
-from core import Exception, Events, Router, Middleware
+from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
-from tortoise.exceptions import OperationalError, DoesNotExist
 from fastapi.openapi.docs import (
     get_redoc_html,
     get_swagger_ui_html,
     get_swagger_ui_oauth2_redirect_html,
 )
 from fastapi.openapi.utils import get_openapi
+
+from starlette.middleware.sessions import SessionMiddleware
+
+from config import settings
+from core import Exception, Events, Router, Middleware
+from tortoise.exceptions import OperationalError, DoesNotExist
 
 application: FastAPI = FastAPI(
     debug=settings.APP_DEBUG,
@@ -75,35 +78,41 @@ async def redoc_html():
     )
 
 
+@application.get('/vue-doc-ui/{file_path:path}')
+async def vue_doc(file_path: str = Path(...)):
+    """自己用Vue写的一个 openapi.json 展示界面"""
+    if file_path == '' or file_path == 'index' or file_path == 'index.html':
+        f = open('./docs-ui/dist/index.html')
+        content = f.read()
+        # 临时解决 module 引入方式时，使用fastapi提供访问，报错的问题
+        content = content.replace('type="module" crossorigin', 'defer')
+        f.close()
+        return HTMLResponse(content)
+    else:
+        return FileResponse(f'./docs-ui/dist/{file_path}')
+
+
 # 事件监听
 application.add_event_handler("startup", Events.startup(application))
 application.add_event_handler("shutdown", Events.stopping(application))
 
 # 异常错误处理
 application.add_exception_handler(HTTPException, Exception.http_error_handler)
-application.add_exception_handler(
-    RequestValidationError, Exception.http422_error_handler
-)
-application.add_exception_handler(
-    Exception.UnicornException, Exception.unicorn_exception_handler
-)
+application.add_exception_handler(RequestValidationError, Exception.http422_error_handler)
+application.add_exception_handler(Exception.UnicornException, Exception.unicorn_exception_handler)
 application.add_exception_handler(DoesNotExist, Exception.mysql_does_not_exist)
-application.add_exception_handler(
-    OperationalError, Exception.mysql_operational_error)
+application.add_exception_handler(OperationalError, Exception.mysql_operational_error)
 
 # 中间件
 application.add_middleware(Middleware.BaseMiddleware)
-
-
 # 允许跨域
-# application.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=settings.CORS_ORIGINS,
-#     allow_credentials=settings.CORS_ALLOW_CREDENTIALS,
-#     allow_methods=settings.CORS_ALLOW_METHODS,
-#     allow_headers=settings.CORS_ALLOW_HEADERS,
-# )
-
+application.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.CORS_ORIGINS,
+    allow_credentials=settings.CORS_ALLOW_CREDENTIALS,
+    allow_methods=settings.CORS_ALLOW_METHODS,
+    allow_headers=settings.CORS_ALLOW_HEADERS,
+)
 application.add_middleware(
     SessionMiddleware,
     secret_key=settings.SECRET_KEY,
@@ -115,8 +124,7 @@ application.add_middleware(
 application.include_router(Router.router)
 
 # 静态资源目录
-application.mount(
-    "/static", StaticFiles(directory=settings.STATIC_DIR), name="static")
+application.mount("/static", StaticFiles(directory=settings.STATIC_DIR), name="static")
 application.state.views = Jinja2Templates(directory=settings.TEMPLATE_DIR)
 
 app = application

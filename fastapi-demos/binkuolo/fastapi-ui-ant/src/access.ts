@@ -14,8 +14,8 @@ export default function access(initialState: { currentUser?: USER.UserInfo | und
             currentUser?.user_type === true
               ? true
               : currentUser?.scopes.indexOf(ele.access) === -1
-              ? false
-              : true,
+                ? false
+                : true,
         });
       }
       if (ele.routes) {

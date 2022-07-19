@@ -12,7 +12,7 @@ const Admin: React.FC = () => {
         id: 'pages.admin.subPage.title',
         defaultMessage: 'This page can only be viewed by admin',
       })}
-    >
+    >5
       <Card>
         <Alert
           message={intl.formatMessage({

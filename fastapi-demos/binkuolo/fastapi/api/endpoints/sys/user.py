@@ -2,7 +2,7 @@
 """
 @Des: 用户管理
 """
-from api.common.log import write_access_log
+from service.log import write_access_log
 from api.extends.sms import check_code
 from core.Response import success, fail, res_antd
 from models.base import User, Role, Access, AccessLog
@@ -27,16 +27,19 @@ async def user_add(post: user.CreateUser):
     :param post: CreateUser
     :return:
     """
-    # 过滤用户
+    # 过滤用户，如果用户已存在，则不能创建
     get_user = await User.get_or_none(username=post.username)
     if get_user:
         return fail(msg=f"用户名{post.username}已经存在!")
+
+    # 对 password字段进行编码
     post.password = utils.password.en_password(post.password)
 
     # 创建用户
     create_user = await User.create(**post.dict())
     if not create_user:
         return fail(msg=f"用户{post.username}创建失败!")
+
     if post.roles:
         # 有分配角色
         roles = await Role.filter(id__in=post.roles, role_status=True)
@@ -56,11 +59,15 @@ async def user_del(req: Request, user_id: int):
     :param user_id: int
     :return:
     """
+    # 不能删除自己
     if req.state.user_id == user_id:
         return fail(msg="你不能把自己踢出局吧?")
     delete_action = await User.filter(pk=user_id).delete()
+
+    # 删除失败
     if not delete_action:
         return fail(msg=f"用户{user_id}删除失败!")
+
     return success(msg="删除成功")
 
 
@@ -89,10 +96,13 @@ async def user_update(post: user.UpdateUser):
         post.password = utils.password.en_password(post.password)
 
     data = post.dict()
+    # 如果密码为空，则不更新密码
     if not post.password:
         data.pop("password")
     data.pop("id")
+
     await User.filter(pk=post.id).update(**data)
+
     return success(msg="更新成功!")
 
 
@@ -108,12 +118,16 @@ async def set_role(post: user.SetRole):
     :return:
     """
     user_obj = await User.get_or_none(pk=post.user_id)
+    # 确认用户存在
     if not user_obj:
         return fail(msg="用户不存在!")
+
     # 清空角色
     await user_obj.role.clear()
+
     # 修改权限
     if post.roles:
+        # 查询角色
         roles = await Role.filter(role_status=True, id__in=post.roles).all()
         # 分配角色
         await user_obj.role.add(*roles)
@@ -129,7 +143,7 @@ async def set_role(post: user.SetRole):
 )
 async def user_list(
     pageSize: int = 10,
-    current: int = 1,
+    pageNum: int = 1,
     username: str = Query(None),
     user_phone: str = Query(None),
     user_status: bool = Query(None),
@@ -156,7 +170,7 @@ async def user_list(
     # 查询
     data = (
         await user_data.limit(pageSize)
-        .offset(pageSize * (current - 1))
+        .offset(pageSize * (pageNum - 1))
         .order_by("-create_time")
         .values(
             "key",
