@@ -96,6 +96,10 @@ class Access(TimestampMixin):
         default=False, description="是否验证权限 True为验证 False不验证")
     is_menu = fields.BooleanField(
         default=False, description="是否为菜单 True菜单 False不是菜单")
+    route_path = fields.CharField(
+        null=True, max_length=255, description="前端路由路径")
+    route_name = fields.CharField(
+        null=True, max_length=255, description="前端路由路径")
 
     class Meta:
         table_description = "权限表"
