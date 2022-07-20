@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="16c389bd-0c60-4f0b-9570-afc92783fc31" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../django/bilibili_zai_qiao_yi_hang_dai_ma/mysite_dj22/article/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../django/bilibili_zai_qiao_yi_hang_dai_ma/mysite_dj22/article/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../django/bilibili_zai_qiao_yi_hang_dai_ma/mysite_dj22/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../../../django/bilibili_zai_qiao_yi_hang_dai_ma/mysite_dj22/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="16c389bd-0c60-4f0b-9570-afc92783fc31" name="Changes" comment="update">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/common/log.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/log.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/endpoints/sys/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/sys/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/extends/cos.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/extends/cos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/extends/wechat.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/extends/wechat.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/Events.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/Events.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/redis.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/redis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/viewpoints/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/viewpoints/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build_vue_docs_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/build_admin_ui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/dist/assets/index.798cefed.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/dist/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/dist/vite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/public/vite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/src/api/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/src/assets/vue.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/src/style/common.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/src/utils/axios-request.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/src/vite-env.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/tsconfig.node.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/tsconfig.node.tsbuildinfo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs-ui/vite.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/think-swagger-ui-vuele/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/think-swagger-ui-vuele/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +37,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="JavaScript File" />
+        <option value="Python Script" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -51,7 +62,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/static/vue-docs-ui" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="E:\my-projects\python-web-study\fastapi-demos\binkuolo\fastapi\docs-ui\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="E:\my-projects\python-web-study\fastapi-demos\binkuolo\fastapi\admin-ui\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -75,20 +86,28 @@
       <workItem from="1657608390680" duration="8519000" />
       <workItem from="1657736966314" duration="3035000" />
       <workItem from="1657757045639" duration="5559000" />
-      <workItem from="1657974632848" duration="26314000" />
+      <workItem from="1657974632848" duration="30865000" />
+      <workItem from="1658255794084" duration="10854000" />
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1658157403159</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1658157403159</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update">
+      <created>1658157427476</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1658157427476</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/docs-ui/vite.config.d.ts" />
-        <option value="$PROJECT_DIR$/docs-ui/vite.config.js" />
-        <option value="$PROJECT_DIR$/docs-ui/src/main.js" />
-        <option value="$PROJECT_DIR$/docs-ui/src/main.js.map" />
-      </list>
-    </option>
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
@@ -103,5 +122,10 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>

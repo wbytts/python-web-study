@@ -4,7 +4,7 @@
 """
 from fastapi import APIRouter
 from api.endpoints.test.test import test_oath2
-from api.endpoints.sys import user, role, access
+from api.endpoints.sys import user, role, access, menu
 from api.websocket import admin_chat
 from api.extends import sms, wechat
 
@@ -17,6 +17,9 @@ api_router.post("/test/oath2", tags=["测试oath2授权"])(test_oath2)  # Swagge
 api_router.include_router(user.router, prefix="/admin", tags=["用户管理"])
 api_router.include_router(role.router, prefix="/admin", tags=["角色管理"])
 api_router.include_router(access.router, prefix="/admin", tags=["权限管理"])
+api_router.include_router(menu.router, prefix="/admin", tags=["菜单管理"])
+
+# websocket
 api_router.include_router(admin_chat.router, prefix="/ws", tags=["WebSocket"])
 
 # 第三方拓展

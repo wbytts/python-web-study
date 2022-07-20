@@ -5,7 +5,9 @@
 """
 import os
 
-os.chdir('./docs-ui')
+os.chdir('./admin-ui')
+os.system('npm install')
 os.system('npm run build')
+os.chdir('../')
 
 

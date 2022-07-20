@@ -1,7 +1,5 @@
 # -*- coding:utf-8 -*-
 """
-@Created on : 2022/4/22 22:02
-@Author: binkuolo
 @Des: app运行时文件
 """
 import os
@@ -23,6 +21,8 @@ from starlette.middleware.sessions import SessionMiddleware
 from config import settings
 from core import Exception, Events, Router, Middleware
 from tortoise.exceptions import OperationalError, DoesNotExist
+
+# import build_admin_ui
 
 application: FastAPI = FastAPI(
     debug=settings.APP_DEBUG,
@@ -63,7 +63,7 @@ async def custom_swagger_ui_html():
 
 
 # swagger_ui_oauth2_redirect_url
-@application.get(application.swagger_ui_oauth2_redirect_url, include_in_schema=False)
+@application.get(application.swagger_ui_oauth2_redirect_url, include_in_schema=False)  # type: ignore
 async def swagger_ui_redirect():
     return get_swagger_ui_oauth2_redirect_html()
 
@@ -78,18 +78,18 @@ async def redoc_html():
     )
 
 
-@application.get('/vue-doc-ui/{file_path:path}')
+@application.get('/vue-admin-ui/{file_path:path}')
 async def vue_doc(file_path: str = Path(...)):
     """自己用Vue写的一个 openapi.json 展示界面"""
     if file_path == '' or file_path == 'index' or file_path == 'index.html':
-        f = open('./docs-ui/dist/index.html')
+        f = open('./admin-ui/dist/index.html')
         content = f.read()
         # 临时解决 module 引入方式时，使用fastapi提供访问，报错的问题
         content = content.replace('type="module" crossorigin', 'defer')
         f.close()
         return HTMLResponse(content)
     else:
-        return FileResponse(f'./docs-ui/dist/{file_path}')
+        return FileResponse(f'./admin-ui/dist/{file_path}')
 
 
 # 事件监听
