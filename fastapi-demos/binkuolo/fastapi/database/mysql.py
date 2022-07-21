@@ -5,7 +5,7 @@ FilePath: \fastapi\database\mysql.py
 Author: 陈炳翰
 Date: 2022-07-14 21:25:59
 LastEditors: 陈炳翰
-LastEditTime: 2022-07-21 23:52:17
+LastEditTime: 2022-07-21 23:57:52
 good good study 📚, day day up ✔️.
 '''
 # -*- coding:utf-8 -*-
@@ -29,7 +29,8 @@ DB_ORM_CONFIG = {
                 'password': os.getenv('BASE_PASSWORD', '123456'),
                 'port': int(os.getenv('BASE_PORT', 3306)),
                 'database': os.getenv('BASE_DB', 'fastapi'),
-                'pool_recycle': 60,  # 每60秒，发送一个简单的查询到数据库，防止断掉
+                # 'pool_recycle': 60,  # 每60秒，发送一个简单的查询到数据库，防止断掉
+                'connect_timeout': 60,
                 'echo': True,  # 数据库日志
             }
         },
