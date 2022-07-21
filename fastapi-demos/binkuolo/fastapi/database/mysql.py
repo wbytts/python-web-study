@@ -1,14 +1,23 @@
+'''
+Description: 
+FilePath: \fastapi\database\mysql.py
+******************************
+Author: 陈炳翰
+Date: 2022-07-14 21:25:59
+LastEditors: 陈炳翰
+LastEditTime: 2022-07-21 23:52:17
+good good study 📚, day day up ✔️.
+'''
 # -*- coding:utf-8 -*-
 """
 @Des: mysql数据库
 """
 
+
+# -----------------------数据库配置-----------------------------------
 from fastapi import FastAPI
 from tortoise.contrib.fastapi import register_tortoise
 import os
-
-
-# -----------------------数据库配置-----------------------------------
 DB_ORM_CONFIG = {
     "connections": {
         "base": {
@@ -20,6 +29,8 @@ DB_ORM_CONFIG = {
                 'password': os.getenv('BASE_PASSWORD', '123456'),
                 'port': int(os.getenv('BASE_PORT', 3306)),
                 'database': os.getenv('BASE_DB', 'fastapi'),
+                'pool_recycle': 60,  # 每60秒，发送一个简单的查询到数据库，防止断掉
+                'echo': True,  # 数据库日志
             }
         },
         # "db2": {
@@ -61,4 +72,5 @@ async def register_mysql(app: FastAPI):
         config=DB_ORM_CONFIG,
         generate_schemas=False,  # 是否生成表结构
         add_exception_handlers=True,  # 是否开启异常信息处理
+        pool_recycle=3600
     )
