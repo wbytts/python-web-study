@@ -41,9 +41,12 @@ async def all_roles_options(user_id: int = Query(None)):
 )
 async def create_role(post: CreateRole):
     """
-    创建角色
-    :param post: CreateRole
-    :return:
+    <h1>请求参数说明:</h1>
+    <ul>
+        <li>role_name: 角色名称(字符串)</li>
+        <li>role_status: 角色状态(布尔值)</li>
+        <li>role_desc: 角色描述(字符串)</li>
+    </ul>
     """
     result = await Role.create(**post.dict())
     if not result:

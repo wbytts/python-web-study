@@ -1,17 +1,29 @@
+'''
+Description: 
+FilePath: \fastapi\schemas\role.py
+******************************
+Author: 陈炳翰
+Date: 2022-07-13 20:43:46
+LastEditors: 陈炳翰
+LastEditTime: 2022-07-21 22:21:17
+good good study 📚, day day up ✔️.
+'''
 # -*- coding:utf-8 -*-
 """
 @Des: role schemas
 """
+
+
+
+
 from pydantic import BaseModel, Field
 from typing import List, Optional
 from schemas.base import ResAntTable
 from datetime import datetime
-
-
 class CreateRole(BaseModel):
-    role_name: str = Field(min_length=3, max_length=10)
+    role_name: str = Field(min_length=1, max_length=10, summary="角色名称")
     role_status: Optional[bool] = False
-    role_desc: Optional[str] = Field(max_length=255)
+    role_desc: Optional[str] = Field(max_length=255, summary="角色描述")
 
 
 class UpdateRole(BaseModel):
