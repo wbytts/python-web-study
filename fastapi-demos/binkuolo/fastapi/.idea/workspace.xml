@@ -2,31 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16c389bd-0c60-4f0b-9570-afc92783fc31" name="Changes" comment="update">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fastapi-ui-ant/src/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../fastapi-ui-ant/src/app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fastapi-ui-ant/src/components/RightContent/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../fastapi-ui-ant/src/components/RightContent/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build_vue_docs_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/build_admin_ui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/dist/assets/index.798cefed.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/dist/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/dist/vite.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/public/vite.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/src/App.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/src/api/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/src/assets/vue.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/src/style/common.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/src/utils/axios-request.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/src/vite-env.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/tsconfig.node.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/tsconfig.node.tsbuildinfo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs-ui/vite.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/endpoints/sys/access.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/sys/access.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/endpoints/sys/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/sys/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/endpoints/test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/endpoints/test/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/Auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/mysql.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/mysql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/redis.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/redis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/role.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/role.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/think-swagger-ui-vuele" beforeDir="false" afterPath="$PROJECT_DIR$/think-swagger-ui-vuele" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/think-swagger-ui-vuele/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/think-swagger-ui-vuele/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +48,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/static/vue-docs-ui" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
     <property name="ts.external.directory.path" value="E:\my-projects\python-web-study\fastapi-demos\binkuolo\fastapi\admin-ui\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -87,7 +74,9 @@
       <workItem from="1657736966314" duration="3035000" />
       <workItem from="1657757045639" duration="5559000" />
       <workItem from="1657974632848" duration="30865000" />
-      <workItem from="1658255794084" duration="10854000" />
+      <workItem from="1658255794084" duration="20575000" />
+      <workItem from="1658455886735" duration="11989000" />
+      <workItem from="1658471018285" duration="3395000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1658157403159</created>

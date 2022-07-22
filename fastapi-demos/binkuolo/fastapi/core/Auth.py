@@ -53,6 +53,8 @@ async def check_permissions(req: Request, security_scopes: SecurityScopes, token
         payload = jwt.decode(token, settings.JWT_SECRET_KEY,
                              algorithms=[settings.JWT_ALGORITHM])
 
+        print('token信息:', payload)
+
         if payload:
             # 用户ID
             user_id = payload.get("user_id", None)

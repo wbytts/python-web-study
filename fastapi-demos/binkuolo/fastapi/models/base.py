@@ -19,19 +19,13 @@ class TimestampMixin(Model):
 class UserWechat(TimestampMixin):
     city = fields.CharField(null=True, max_length=255, description="城市")
     country = fields.CharField(null=True, max_length=255, description="国家")
-    headimgurl = fields.CharField(
-        null=True, max_length=255, description="微信头像")
+    headimgurl = fields.CharField(null=True, max_length=255, description="微信头像")
     nickname = fields.CharField(null=True, max_length=255, description="微信昵称")
-    openid = fields.CharField(
-        unique=True, max_length=255, description="openid")
-    unionid = fields.CharField(
-        unique=True, null=True, max_length=255, description="unionid"
-    )
+    openid = fields.CharField(unique=True, max_length=255, description="openid")
+    unionid = fields.CharField(unique=True, null=True, max_length=255, description="unionid")
     province = fields.CharField(null=True, max_length=255, description="省份")
     sex = fields.IntField(null=True, description="性别")
-    user: fields.OneToOneRelation["UserWechat"] = fields.OneToOneField(
-        "base.User", related_name="wechat", on_delete=fields.CASCADE
-    )
+    user: fields.OneToOneRelation["UserWechat"] = fields.OneToOneField("base.User", related_name="wechat", on_delete=fields.CASCADE)
 
     class Meta:
         table_description = "用户微信"
@@ -40,16 +34,11 @@ class UserWechat(TimestampMixin):
 
 class User(TimestampMixin):
     """基础用户模型"""
-    role: fields.ManyToManyRelation["Role"] = fields.ManyToManyField(
-        "base.Role", related_name="user", on_delete=fields.CASCADE
-    )
+    role: fields.ManyToManyRelation["Role"] = fields.ManyToManyField("base.Role", related_name="user", on_delete=fields.CASCADE)
     username = fields.CharField(null=True, max_length=20, description="用户名")
-    user_type = fields.BooleanField(
-        default=False, description="用户类型 True:超级管理员 False:普通管理员"
-    )
+    user_type = fields.BooleanField(default=False, description="用户类型 True:超级管理员 False:普通管理员")
     password = fields.CharField(null=True, max_length=255)
-    nickname = fields.CharField(
-        default="binkuolo", max_length=255, description="昵称")
+    nickname = fields.CharField(default="binkuolo", max_length=255, description="昵称")
     user_phone = fields.CharField(null=True, description="手机号", max_length=11)
     user_email = fields.CharField(null=True, description="邮箱", max_length=255)
     full_name = fields.CharField(null=True, description="姓名", max_length=255)
@@ -57,8 +46,7 @@ class User(TimestampMixin):
     header_img = fields.CharField(null=True, max_length=255, description="头像")
     sex = fields.IntField(default=0, null=True, description="0未知 1男 2女")
     remarks = fields.CharField(null=True, max_length=30, description="备注")
-    client_host = fields.CharField(
-        null=True, max_length=19, description="访问IP")
+    client_host = fields.CharField(null=True, max_length=19, description="访问IP")
     wechat: fields.OneToOneRelation[UserWechat]
 
     class Meta:
@@ -70,11 +58,8 @@ class Role(TimestampMixin):
     """角色"""
     user: fields.ManyToManyRelation[User]
     role_name = fields.CharField(max_length=15, description="角色名称")
-    access: fields.ManyToManyRelation["Access"] = fields.ManyToManyField(
-        "base.Access", related_name="role", on_delete=fields.CASCADE
-    )
-    role_status = fields.BooleanField(
-        default=False, description="True:启用 False:禁用")
+    access: fields.ManyToManyRelation["Access"] = fields.ManyToManyField("base.Access", related_name="role", on_delete=fields.CASCADE)
+    role_status = fields.BooleanField(default=False, description="True:启用 False:禁用")
     role_desc = fields.CharField(null=True, max_length=255, description="角色描述")
 
     class Meta:
@@ -87,19 +72,13 @@ class Access(TimestampMixin):
     role: fields.ManyToManyRelation[Role]
     access_name = fields.CharField(max_length=15, description="权限名称")
     parent_id = fields.IntField(default=0, description="父id")
-    scopes = fields.CharField(
-        unique=True, max_length=255, description="权限范围标识")
-    access_desc = fields.CharField(
-        null=True, max_length=255, description="权限描述")
+    scopes = fields.CharField(unique=True, max_length=255, description="权限范围标识")
+    access_desc = fields.CharField(null=True, max_length=255, description="权限描述")
     menu_icon = fields.CharField(null=True, max_length=255, description="菜单图标")
-    is_check = fields.BooleanField(
-        default=False, description="是否验证权限 True为验证 False不验证")
-    is_menu = fields.BooleanField(
-        default=False, description="是否为菜单 True菜单 False不是菜单")
-    route_path = fields.CharField(
-        null=True, max_length=255, description="前端路由路径")
-    route_name = fields.CharField(
-        null=True, max_length=255, description="前端路由路径")
+    is_check = fields.BooleanField(default=False, description="是否验证权限 True为验证 False不验证")
+    is_menu = fields.BooleanField(default=False, description="是否为菜单 True菜单 False不是菜单")
+    route_path = fields.CharField(null=True, max_length=255, description="前端路由path")
+    route_name = fields.CharField(null=True, max_length=255, description="前端路由name")
 
     class Meta:
         table_description = "权限表"
@@ -108,10 +87,8 @@ class Access(TimestampMixin):
 
 class AccessLog(TimestampMixin):
     user_id = fields.IntField(description="用户ID")
-    target_url = fields.CharField(
-        null=True, description="访问的url", max_length=255)
-    user_agent = fields.CharField(
-        null=True, description="访问UA", max_length=255)
+    target_url = fields.CharField(null=True, description="访问的url", max_length=255)
+    user_agent = fields.CharField(null=True, description="访问UA", max_length=255)
     request_params = fields.JSONField(null=True, description="请求参数get|post")
     ip = fields.CharField(null=True, max_length=32, description="访问IP")
     note = fields.CharField(null=True, max_length=255, description="备注")
@@ -122,10 +99,14 @@ class AccessLog(TimestampMixin):
 
 
 class SystemParams(TimestampMixin):
-    params_name = fields.CharField(
-        unique=True, max_length=255, description="参数名")
+    params_name = fields.CharField(unique=True, max_length=255, description="参数名")
     params = fields.JSONField(description="参数")
 
     class Meta:
         table_description = "系统参数表"
         table = "system_params"
+
+
+class File(TimestampMixin):
+    """文件"""
+    pass

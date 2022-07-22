@@ -58,7 +58,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
     disableContentMargin: false,
     // 页面水印配置
     waterMarkProps: {
-      content: '陈炳翰Admin 版权所有，盗版必究',
+      content: '冰咖啡 Admin',
     },
     // footerRender: () => <Footer />,
     onPageChange: () => {

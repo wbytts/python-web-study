@@ -164,29 +164,16 @@ async def user_list(
     if create_time:
         query.setdefault("create_time__range", create_time)
 
-    user_data = User.annotate(key=F("id")).filter(
-        **query).filter(id__not=1).all()
+    user_data = User.annotate(key=F("id")).filter(**query).filter(id__not=1).all()
     # 总数
     total = await user_data.count()
     # 查询
     data = (
         await user_data.limit(pageSize)
-        .offset(pageSize * (pageNum - 1))
-        .order_by("-create_time")
-        .values(
-            "key",
-            "id",
-            "username",
-            "user_type",
-            "user_phone",
-            "user_email",
-            "user_status",
-            "header_img",
-            "sex",
-            "remarks",
-            "create_time",
-            "update_time",
-        )
+            .offset(pageSize * (pageNum - 1))
+            .order_by("-create_time")
+            .values("key", "id", "username", "user_type", "user_phone", "user_email", "user_status", "header_img", "sex",
+                    "remarks", "create_time", "update_time")
     )
 
     return res_antd(code=True, data=data, total=total)
@@ -221,8 +208,7 @@ async def user_info(req: Request):
         access = [i[0] for i in query_access]
     # 处理手机号 ****
     if user_data.user_phone:
-        user_data.user_phone = user_data.user_phone.replace(
-            user_data.user_phone[3:7], "****")  # type: ignore
+        user_data.user_phone = user_data.user_phone.replace(user_data.user_phone[3:7], "****")  # type: ignore
     # 将作用域加入到用户信息中
     user_data.__setattr__("scopes", access)
     roles = await user_data.role.all().values_list("id")
@@ -230,7 +216,7 @@ async def user_info(req: Request):
     return success(msg="用户信息", data=user_data.__dict__)
 
 
-@ router.post("/account/login", response_model=user.UserLogin, summary="用户登陆")
+@router.post("/account/login", response_model=user.UserLogin, summary="用户登陆")
 async def account_login(req: Request, post: user.AccountLogin):
     """
     用户登陆
@@ -263,6 +249,7 @@ async def account_login(req: Request, post: user.AccountLogin):
             return fail(msg=f"用户{post.username}密码验证失败!")
         if not get_user.user_status:
             return fail(msg=f"用户{post.username}已被管理员禁用!")
+
         jwt_data = {"user_id": get_user.pk, "user_type": get_user.user_type}
         jwt_token = create_access_token(data=jwt_data)
         data = {"token": jwt_token,
@@ -280,15 +267,13 @@ async def get_access_log(req: Request):
     :param req:
     :return:
     """
-    log = (
-        await AccessLog()
-        .filter(user_id=req.state.user_id)
-        .limit(10)
-        .order_by("-create_time")
-        .values("create_time", "ip", "note", "id")
+    logs = (
+        await AccessLog.filter(user_id=req.state.user_id)
+            .limit(10).order_by("-create_time")
+            .values("create_time", "ip","note", "id")
     )
 
-    return success(msg="access log", data=log)
+    return success(msg="access log", data=logs)
 
 
 @router.put("/info", dependencies=[Security(check_permissions)], summary="用户基本信息修改")

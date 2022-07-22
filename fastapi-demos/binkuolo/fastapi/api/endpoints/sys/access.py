@@ -15,11 +15,6 @@ router = APIRouter(prefix="/access")
 
 @router.post("", summary="权限创建", response_model=base.BaseResp)
 async def create_access(post: role.CreateAccess):
-    """
-    创建权限
-    :param post: CreateAccess
-    :return:
-    """
     # 超级管理员可以创建权限
     # if req.state.user_id is not 1 and req.state.user_type is not False:
     #     return fail(msg="无法建权限!")
@@ -37,12 +32,11 @@ async def create_access(post: role.CreateAccess):
 async def get_all_access(role_id: int):
     """
     根据角色id获取全部权限
-    :return:
     """
     result = (
         await Access.annotate(key=F("id"), title=F("access_name"))
-        .all()
-        .values("key", "title", "parent_id", "is_menu", "route_path", "route_name")
+            .all()
+            .values("key", "title", "parent_id", "is_menu", "route_path", "route_name")
     )
     # 当前角色权限
     role_access = await Access.filter(role__id=role_id).values_list("id")
@@ -70,8 +64,6 @@ async def get_all_access(role_id: int):
 async def set_role_access(post: role.SetAccess):
     """
     设置角色权限
-    :param post:
-    :return:
     """
     # 获取当前角色
     role_data = await Role.get_or_none(id=post.role_id)
@@ -86,7 +78,7 @@ async def set_role_access(post: role.SetAccess):
     return success(msg="保存成功!")
 
 
-def access_tree(data, pid):
+def access_tree(data, pid) -> list:
     """
     遍历权限树
     :param data: rule[]
