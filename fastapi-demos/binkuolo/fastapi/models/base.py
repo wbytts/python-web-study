@@ -57,7 +57,7 @@ class User(TimestampMixin):
 class Role(TimestampMixin):
     """角色"""
     user: fields.ManyToManyRelation[User]
-    role_name = fields.CharField(max_length=15, description="角色名称")
+    role_name = fields.CharField(max_length=255, description="角色名称")
     access: fields.ManyToManyRelation["Access"] = fields.ManyToManyField("base.Access", related_name="role", on_delete=fields.CASCADE)
     role_status = fields.BooleanField(default=False, description="True:启用 False:禁用")
     role_desc = fields.CharField(null=True, max_length=255, description="角色描述")

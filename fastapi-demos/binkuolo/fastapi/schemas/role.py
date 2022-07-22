@@ -5,7 +5,7 @@ FilePath: \fastapi\schemas\role.py
 Author: 陈炳翰
 Date: 2022-07-13 20:43:46
 LastEditors: 陈炳翰
-LastEditTime: 2022-07-21 22:21:17
+LastEditTime: 2022-07-22 23:59:26
 good good study 📚, day day up ✔️.
 '''
 # -*- coding:utf-8 -*-
@@ -20,7 +20,7 @@ from datetime import datetime
 
 
 class CreateRole(BaseModel):
-    role_name: str = Field(min_length=1, max_length=10, title="角色名称")
+    role_name: str = Field(min_length=1, max_length=255, title="角色名称")
     role_status: Optional[bool] = Field(default=False, title="角色状态")
     role_desc: Optional[str] = Field(max_length=255, title="角色描述")
 

@@ -48,7 +48,12 @@ async def create_role(post: CreateRole):
         <li>role_desc: 角色描述(字符串)</li>
     </ul>
     """
-    result = await Role.create(**post.dict())
+    import time
+    params = post.dict()
+    for i in range(10000):
+        result = await Role.create(**params)
+        params.update({'role_name': '张三' + str(time.time())})
+
     if not result:
         return fail(msg="创建失败!")
     return success(msg="创建成功!")
